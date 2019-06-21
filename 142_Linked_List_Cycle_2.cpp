@@ -48,7 +48,7 @@ F=(k-1)(a+b)+b
 
 xiaobin9652@163.com;
 Xiaobin Tian;
- */
+*/
 
 #include<stddef.h>
 #include<unordered_set>
