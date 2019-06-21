@@ -23,6 +23,10 @@
 
 xiaobin9652@163.com;
 Xiaobin Tian;
+解题思路：
+优化的滑动窗口：
+当我们找到重复的字符时，我们可以立即跳过该窗口。
+也就是说，如果 s[j]s[j] 在 [i, j)范围内有与 j' 重复的字符，我们不需要逐渐增加i。我们可以直接跳过 [i，j']范围内的所有元素，并将 i 变为 j' + 1
  */
 #include<string>
 #include<unordered_map>

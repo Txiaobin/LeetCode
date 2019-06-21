@@ -19,6 +19,8 @@
 
 xiaobin9652@163.com;
 Xiaobin Tian;
+解题思路：
+递归的方法进行求解。
  */
 #include<algorithm>
 using namespace::std;

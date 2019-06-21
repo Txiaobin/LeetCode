@@ -22,6 +22,8 @@
 
 xiaobin9652@163.com;
 Xiaobin Tian;
+解题思路：
+简单的栈的使用，数据结构基本习题。
  */
 
 #include<vector>

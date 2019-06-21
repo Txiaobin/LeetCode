@@ -13,6 +13,8 @@
 
 xiaobin9652@163.com;
 Xiaobin Tian;
+解题思路：
+使用哈希表进行查找，哈希表的时间复杂度为O(1)。
  */
 #include<vector>
 #include<unordered_map>
