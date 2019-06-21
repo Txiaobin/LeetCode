@@ -1,0 +1,74 @@
+/*
+给定一个链表，判断链表中是否有环。
+为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+
+示例 1：
+输入：head = [3,2,0,-4], pos = 1
+输出：true
+解释：链表中有一个环，其尾部连接到第二个节点。
+
+示例 2：
+输入：head = [1], pos = -1
+输出：false
+解释：链表中没有环。
+
+解题思路：
+思路一：哈希表，使用哈希表保存遍历过的节点，每次读取链表中一个节点后，与哈希表中元素进行比较，若存在相同的即有环。
+
+思路二：Floyd 算法。
+这里我们初始化两个指针，快指针和慢指针。我们每次移动慢指针一步、快指针两步，直到快指针无法继续往前移动。
+如果在某次移动后，快慢指针指向了同一个节点，我们就返回它。否则，我们继续，直到 while 循环终止且没有返回任何节点，这种情况说明没有成环，我们返回 null 。
+
+环中的节点从 0 到 C-1 编号，其中 C 是环的长度。非环节点从 -F 到 -1 编号，其中 F 是环以外节点的数目。 
+F次迭代以后，慢指针指向了 0 且快指针指向某个节点 h ，其中 h=F(mod)C 。这是因为快指针在 F 次迭代中遍历了 2F 个节点，且恰好有 F 个在环中。
+继续迭代 C-h 次，慢指针显然指向第 C-h 号节点，而快指针也会指向相同的节点。原因在于，快指针从 h 号节点出发遍历了 2(C-h) 个节点。
+h + 2(C−h)=2C−h
+因此，如果列表是有环的，快指针和慢指针最后会同时指向同一个节点，因此被称为 相遇 。
+(慢指针总是只走了F + C-h 个节点，即在环中未走满一圈；快指针可能在环中走了k圈)
+
+作者：LeetCode
+链接：https://leetcode-cn.com/problems/two-sum/solution/huan-xing-lian-biao-ii-by-leetcode/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+xiaobin9652@163.com;
+Xiaobin Tian;
+*/
+
+#include<stddef.h>
+#include<unordered_set>
+using std::unordered_set;
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+
+bool hasCycle_1(ListNode *head){
+    unordered_set<ListNode*> myset;
+    auto p = head;
+    while(p){
+        if(myset.find(p) != myset.end()){
+            return true;
+        }
+        myset.insert(p);
+        p = p->next;
+    }
+    return false;
+}
+
+bool hasCycle_2(ListNode *head){
+    if(!head || !head->next)
+        return false;
+    auto *p = head, *q = head;
+    while(q && q->next){
+        p = p->next;
+        q = q->next->next;
+        if(p==q)
+            break;
+    }
+    if(p != q)
+        return false;
+    else
+        return true;
+}
