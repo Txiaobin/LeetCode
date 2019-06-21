@@ -21,6 +21,7 @@ O(nlogn)时间复杂度的排序算法：希尔排序，快速排序，归并排
 本题考察链表的归并排序实现。
 假头节点是一个很方便很实用的链表操作的技巧。
  */
+
 #include<stddef.h>
 struct ListNode {
     int val;
