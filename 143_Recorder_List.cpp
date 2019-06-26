@@ -21,16 +21,15 @@ Xiaobin Tian;
 3：将翻转后的链表L2和L1进行拼接。
  */
 
-#include<stddef.h>
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(nullptr) {}
 };
 
 ListNode *findMid(ListNode *head){
     auto *slow = head, *fast = head->next;
-    while(fast != NULL && fast->next != NULL){
+    while(fast != nullptr && fast->next != nullptr){
         fast = fast->next->next;
         slow = slow->next;
     }
@@ -38,7 +37,7 @@ ListNode *findMid(ListNode *head){
 }
 ListNode *reverse(ListNode *head){
     ListNode *dummyhead = new ListNode(0);
-    dummyhead->next = NULL;
+    dummyhead->next = nullptr;
     auto q = head;
     auto p = head;
     while(q){
@@ -56,7 +55,7 @@ void reorderList(ListNode* head){
     auto *p=head;
     auto mid = findMid(head);
     auto q = mid->next;
-    mid->next = NULL;
+    mid->next = nullptr;
     q = reverse(q);
     while(q&&p){
         auto r = p->next;

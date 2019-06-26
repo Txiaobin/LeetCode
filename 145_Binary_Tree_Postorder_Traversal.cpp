@@ -30,7 +30,7 @@ struct TreeNode {
 int val;
     TreeNode *left;
     TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 vector<int> postorderTraversal(TreeNode* root) {
     vector<int>  traver;
@@ -38,7 +38,7 @@ vector<int> postorderTraversal(TreeNode* root) {
         return traver;
     }
     TreeNode dummyRoot(0);
-    TreeNode *cur=&dummyRoot, *pre=NULL;
+    TreeNode *cur=&dummyRoot, *pre=nullptr;
     stack<TreeNode*> mystack;
     mystack.push(root);
     while(!mystack.empty()){

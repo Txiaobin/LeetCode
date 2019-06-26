@@ -28,12 +28,12 @@ using namespace::std;
     int val;
     TreeNode *left;
     TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
  };
 int minDepth(TreeNode* root) {
     if(!root)
         return 0;
-    if(root->left==NULL && root->right == NULL)
+    if(root->left==nullptr && root->right == nullptr)
         return 1;
     else{
         int leftdepth = minDepth(root->left);

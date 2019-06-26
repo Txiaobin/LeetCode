@@ -56,7 +56,7 @@ using std::unordered_set;
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(nullptr) {}
 };
 
 ListNode *detectCycle_1(ListNode *head){
@@ -69,12 +69,12 @@ ListNode *detectCycle_1(ListNode *head){
         myset.insert(p);
         p = p->next;
     }
-    return NULL;
+    return nullptr;
 }
 
 ListNode *detectCycle_2(ListNode *head){
     if(!head || !head->next)
-        return NULL;
+        return nullptr;
     auto *p = head, *q = head;
     while(q && q->next){
         p = p->next;
@@ -83,7 +83,7 @@ ListNode *detectCycle_2(ListNode *head){
             break;
     }
     if(p != q)
-        return NULL;
+        return nullptr;
     q = head;
     while(p != q){
         p = p->next;

@@ -22,7 +22,7 @@ using namespace::std;
 vector<int> twoSum(vector<int>& nums, int target) {
     int num;
     vector< int> a;
-    std::unordered_map<int, int> mymap;
+    unordered_map<int, int> mymap;
     for(int i = 0; i != nums.size(); ++i)
         mymap.insert({nums[i], i});
     for(int i = 0; i != nums.size(); ++i){

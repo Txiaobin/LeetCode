@@ -22,22 +22,21 @@ O(nlogn)时间复杂度的排序算法：希尔排序，快速排序，归并排
 假头节点是一个很方便很实用的链表操作的技巧。
  */
 
-#include<stddef.h>
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(nullptr) {}
 };
 
 ListNode* cut(ListNode* head, int size){
     auto p = head;
-    while(--size && p!=NULL){
+    while(--size && p!=nullptr){
         p = p->next;
     }
     if(!p)
-        return NULL;
+        return nullptr;
     auto q = p->next;
-    p->next = NULL;
+    p->next = nullptr;
     return q;
 }
     

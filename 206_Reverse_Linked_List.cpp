@@ -20,16 +20,15 @@ Xiaobin Tian;
 反转链表的两种方法分别包含迭代法和递归法。  
  */
 
-#include<stddef.h>
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(nullptr) {}
 };
 
 ListNode *reverseList_1(ListNode *head){
     ListNode *dummyhead = new ListNode(0);
-    dummyhead->next = NULL;
+    dummyhead->next = nullptr;
     auto q = head;
     auto p = head;
     while(q){
@@ -42,8 +41,8 @@ ListNode *reverseList_1(ListNode *head){
 }
 
 ListNode *reverseList_2(ListNode *head) {
-    ListNode *pre = NULL, *cur = head, *r = NULL;
-    while (cur != NULL) {
+    ListNode *pre = nullptr, *cur = head, *r = nullptr;
+    while (cur != nullptr) {
         r = cur->next;
         cur->next = pre;
         pre = cur;

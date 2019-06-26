@@ -41,7 +41,7 @@ using std::unordered_set;
 struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(nullptr) {}
 };
 
 bool hasCycle_1(ListNode *head){
