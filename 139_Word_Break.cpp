@@ -27,15 +27,11 @@
 xiaobin9652@163.com;
 Xiaobin Tian;
 解题思路：
-
 解法一：暴力搜索的方法进行求解，但是在测试过程中会出现超出时间限制的情况。
 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
 ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
 
-解法二：在解法一种，函数在求解时会对相同的字符串调用多次求解。我们可以保存下每个子问题的求解，在下次遇到相同子问题时直接使用不再计算。
-但此方法也会出现超出时间限制的情况。
-
-解法三：动态规划算法
+解法二：动态规划算法
 使用 n+1 大小的数组 dp 来保存求解的过程，其中 n 是给定字符串的长度。
 在求解dp时，使用 2 个下标指针 i 和 j ，其中 i 指向当前字符串（s′）的末尾，j 是当前子字符串（s′）的拆分位置，拆分成 s′(0,j) 和 s'(j+1,i)。
 为了求出dp 数组，我们初始化dp[0] 为true ，这是因为空字符串总是字典的一部分。数组dp剩余的元素都初始化为false。
@@ -52,8 +48,8 @@ using namespace::std;
 bool wordfind_1(string s, unordered_set<string> myset, int start){
     if(start == s.size())
         return true;
-    for(int i = 1; start+i <= s.size(); i++){
-        if((myset.find(s.substr(start,i)) != myset.end()) && wordfind_1(s, myset, start + i)){
+    for(int i = start+1; i <= s.size(); i++){
+        if((myset.find(s.substr(start,i - start)) != myset.end()) && (wordfind_1(s, myset, i) != false)){
             return true;
         }  
     }
@@ -67,31 +63,7 @@ bool wordBreak_1(string s, vector<string> &wordDict){
     return wordfind_1(s,myset,0);
 }
 
-
-bool wordfind_2(string s, unordered_set<string> myset, int start, vector<bool> &boolean){
-    if(start == s.size())
-        return true;
-    if(boolean[start] != false){
-        return true;
-    }
-    for(int i = 1; start+i <= s.size(); i++){
-        if((myset.find(s.substr(start,i)) != myset.end()) && wordfind_2(s, myset, start+i, boolean)){
-            return boolean[start]  = true;
-        }  
-    }
-    return boolean[start] = false;
-}
 bool wordBreak_2(string s, vector<string> &wordDict){
-    unordered_set<string> myset;
-    for(int i = 0; i < wordDict.size(); i++){
-        myset.insert(wordDict[i]);
-    }
-    vector<bool> boolean(s.length(), false);
-    return wordfind_2(s,myset,0,boolean);
-}
-
-
-bool wordBreak_3(string s, vector<string> &wordDict){
     unordered_set<string> myset;
     for(int i = 0; i < wordDict.size(); i++){
         myset.insert(wordDict[i]);
@@ -100,7 +72,7 @@ bool wordBreak_3(string s, vector<string> &wordDict){
     dp[0] = true;
     for(int i = 1; i <= s.length(); ++i){
         for(int j = 0; j < i; ++j){
-            if(dp[j] && myset.find(s.substr(j,i-j)) != myset.end()){
+            if(dp[j] && (myset.find(s.substr(j,i-j)) != myset.end())){
                 dp[i] = true;
                 break;
             }
