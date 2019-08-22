@@ -27,7 +27,7 @@ vector<int> twoSum(vector<int>& nums, int target) {
         mymap.insert({nums[i], i});
     for(int i = 0; i != nums.size(); ++i){
         num = target - nums[i];
-        if(mymap.find(num)!=mymap.end() && mymap.find(num)->second!=i){
+        if(mymap.find(num) != mymap.end() && mymap.find(num)->second != i){
             a = {i, mymap.find(num)->second};
             return a;
         }
